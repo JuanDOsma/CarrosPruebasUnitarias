@@ -73,7 +73,7 @@ public class Controller implements ActionListener {
 					JOptionPane.showMessageDialog(null, "Error: El automovil ya existe");
 				}
 			}
-			}
+			} 
 		}
 	
 		public void limpiar(){
