@@ -73,8 +73,56 @@ public class Controller implements ActionListener {
 					JOptionPane.showMessageDialog(null, "Error: El automovil ya existe");
 				}
 			}
-			} 
+		} 
+		
+	
+	if (e.getActionCommand().equals("Comparar")) {
+		String placa1 = vista.getpViewComparar().getTxtPLaca1().getText();
+		String placa2 = vista.getpViewComparar().getTxtPlaca2().getText();
+		String carac = (String) vista.getpViewComparar().getTipoComp().getSelectedItem();
+		Automovil res = inscripcion.getAutomovilDAO().buscarAutomovil(placa1, inscripcion.getAutomoviles());
+		Automovil res2 = inscripcion.getAutomovilDAO().buscarAutomovil(placa2, inscripcion.getAutomoviles());
+		if (res == null) {
+			JOptionPane.showMessageDialog(null, "Error: El automovil 1 no existe en el sistema.");
+		}else if( res2 == null) {
+			JOptionPane.showMessageDialog(null, "Error: El automovil 2 no existe en el sistema.");
+		}else {
+
+			switch(carac) {
+			case "Modelo":{
+				vista.getpViewComparar().getTxtCarac1().setText(res.getModelo());
+				vista.getpViewComparar().getTxtCarac2().setText(res2.getModelo());
+				break;
+			}
+			case "Marca":{
+				vista.getpViewComparar().getTxtCarac1().setText(res.getMarca());
+				vista.getpViewComparar().getTxtCarac2().setText(res2.getMarca());
+				break;
+			}
+			case "Año":{
+				vista.getpViewComparar().getTxtCarac1().setText(res.getAnio());
+				vista.getpViewComparar().getTxtCarac2().setText(res2.getAnio());
+				break;
+			}
+			case "Puertas":{
+				vista.getpViewComparar().getTxtCarac1().setText(res.getPuertas());
+				vista.getpViewComparar().getTxtCarac2().setText(res2.getPuertas());
+				break;
+			}
+			case "Capacidad":{
+				vista.getpViewComparar().getTxtCarac1().setText(res.getCapacidad());
+				vista.getpViewComparar().getTxtCarac1().setText(res.getCapacidad());
+				break;
+			}
+			case "Tipo":{
+				vista.getpViewComparar().getTxtCarac1().setText(res.getTipo());
+				vista.getpViewComparar().getTxtCarac1().setText(res2.getTipo());
+				break;
+			}
+			}
 		}
+		}
+	}
 	
 		public void limpiar(){
 			vista.getpViewRegistrar().getTxtPLaca().setText("");
