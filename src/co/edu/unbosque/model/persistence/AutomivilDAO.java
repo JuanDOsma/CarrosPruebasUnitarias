@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import co.edu.unbosque.model.Automovil;
+import co.edu.unbosque.model.Ciudadano;
 
 public class AutomivilDAO {
 
@@ -38,6 +39,24 @@ public class AutomivilDAO {
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean eliminarAutomovil(String placa, ArrayList<Automovil> automoviles, File file) {
+		boolean resp = false;
+		try {
+			Automovil e = buscarAutomovil(placa, automoviles);
+			if (e != null) {
+				automoviles.remove(e);
+				file.delete();
+				file.createNewFile();
+				archivo.escribirEnArchivo(automoviles, file);
+				resp = true;
+			}
+			return resp;
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return resp;
 	}
 
 	public Archivo getArchivo() {

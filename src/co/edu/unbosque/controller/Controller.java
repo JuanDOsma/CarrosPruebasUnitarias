@@ -52,7 +52,7 @@ public class Controller implements ActionListener {
 			vista.getpMenu().setVisible(true);
 		}
 
-		if (e.getActionCommand().equals("registrar")) {
+		if (e.getActionCommand().equals("Registrar")) {
 			vista.getpViewRegistrar().setVisible(true);
 			String placa = vista.getpViewRegistrar().getTxtPLaca().getText();
 			String modelo = vista.getpViewRegistrar().getTxtModelo().getText();
